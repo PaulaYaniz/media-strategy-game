@@ -372,15 +372,15 @@
 
 .meterTrack {
   flex: 1;
-  height: 20px;
+  height: 36px;
   background: var(--border);
-  border-radius: 6px;
+  border-radius: 8px;
   overflow: hidden;
 }
 
 .meterFill {
   height: 100%;
-  border-radius: 6px;
+  border-radius: 8px;
   transition: width 0.35s ease;
 }
 
