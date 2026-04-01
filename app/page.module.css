@@ -127,7 +127,7 @@
 .tierBtn:hover {
   background: var(--green);
   border-color: var(--green);
-  color: #000;
+  color: #fff;
 }
 
 .minusBtn {
@@ -237,7 +237,7 @@
 .badge {
   font-size: 0.75rem;
   font-weight: 700;
-  color: #000;
+  color: #fff;
   background: var(--green);
   padding: 3px 8px;
   border-radius: 20px;
@@ -325,7 +325,7 @@
   letter-spacing: 0.03em;
   padding: 1px 5px;
   border-radius: 3px;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .optSelected {
