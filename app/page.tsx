@@ -1,24 +1,22 @@
 "use client";
 
-import { useState, useMemo, useEffect, useRef, useCallback } from "react";
+import { useState, useMemo } from "react";
 import scenarios from "../data/scenarios";
 import styles from "./page.module.css";
 
-// ── Scoring tiers — edit values or labels here ────────────────────────────────
+// ── Scoring tiers ─────────────────────────────────────────────────────────────
 const SCORE_TIERS = [
   { label: "+7", value: 7, title: "High outrage / high profit" },
   { label: "+4", value: 4, title: "Moderate outrage" },
   { label: "+1", value: 1, title: "Safe but engaging" },
 ];
 
-// ── Teams — add or rename entries here to change team count / names ───────────
+// ── Teams ─────────────────────────────────────────────────────────────────────
 const DEFAULT_SCORES: Record<string, number> = {
   "Team 1": 0,
   "Team 2": 0,
   "Team 3": 0,
 };
-
-const TIMER_SECONDS = 45;
 
 const VARIABLES_CONFIG = [
   { key: "engagement" as const, label: "Engagement", color: "#3b82f6" },
@@ -41,11 +39,6 @@ export default function GamePage() {
 
   // Per-scenario option selections: index → chosen option id
   const [selectedOptions, setSelectedOptions] = useState<Record<number, "A" | "B" | "C" | "D">>({});
-
-  // Timer
-  const [timerActive, setTimerActive] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(TIMER_SECONDS);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const scenario = scenarios[currentIndex];
   const total = scenarios.length;
@@ -71,44 +64,17 @@ export default function GamePage() {
     ? scenario.options.find((o) => o.id === selectedOption)?.effects ?? null
     : null;
 
-  // ── Timer ──────────────────────────────────────────────────────────────────
-  const stopTimer = useCallback(() => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    setTimerActive(false);
-  }, []);
-
-  const startTimer = useCallback(() => {
-    stopTimer();
-    setTimeLeft(TIMER_SECONDS);
-    setTimerActive(true);
-  }, [stopTimer]);
-
-  useEffect(() => {
-    if (!timerActive) return;
-    intervalRef.current = setInterval(() => {
-      setTimeLeft((t) => {
-        if (t <= 1) { stopTimer(); return 0; }
-        return t - 1;
-      });
-    }, 1000);
-    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
-  }, [timerActive, stopTimer]);
-
   // ── Navigation ─────────────────────────────────────────────────────────────
   function advance() {
     if (currentIndex + 1 >= total) { setGameOver(true); return; }
     setCurrentIndex((i) => i + 1);
     setRevealed(false);
-    stopTimer();
-    setTimeLeft(TIMER_SECONDS);
   }
 
   function retreat() {
     if (currentIndex <= 0) return;
     setCurrentIndex((i) => i - 1);
     setRevealed(false);
-    stopTimer();
-    setTimeLeft(TIMER_SECONDS);
   }
 
   // ── Option selection ───────────────────────────────────────────────────────
@@ -136,15 +102,9 @@ export default function GamePage() {
     setGameOver(false);
     setCurrentIndex(0);
     setRevealed(false);
-    stopTimer();
-    setTimeLeft(TIMER_SECONDS);
     setScores(Object.fromEntries(Object.keys(scores).map((t) => [t, 0])));
     setSelectedOptions({});
   }
-
-  const timerPct = (timeLeft / TIMER_SECONDS) * 100;
-  const urgent = timeLeft <= 10 && timeLeft > 0;
-  const done = timeLeft === 0;
 
   // ==========================================================================
   // GAME OVER
@@ -366,54 +326,6 @@ export default function GamePage() {
             </button>
           </div>
         </main>
-
-        {/* ── Right: Timer ─────────────────────────────────────────────────── */}
-        <aside className={`${styles.sidebar} ${styles.timerSide}`}>
-          <h2 className={styles.sidebarTitle}>Timer</h2>
-
-          <div className={`${styles.timerNum} ${urgent ? styles.timerUrgent : ""} ${done ? styles.timerDone : ""}`}>
-            {String(Math.floor(timeLeft / 60)).padStart(2, "0")}:
-            {String(timeLeft % 60).padStart(2, "0")}
-          </div>
-
-          {/* SVG ring */}
-          <div className={styles.ringWrap}>
-            <svg viewBox="0 0 120 120" className={styles.ring}>
-              <circle cx="60" cy="60" r="52" className={styles.ringBg} />
-              <circle
-                cx="60"
-                cy="60"
-                r="52"
-                className={`${styles.ringFill} ${urgent ? styles.ringUrgent : ""}`}
-                style={{
-                  strokeDasharray: `${2 * Math.PI * 52}`,
-                  strokeDashoffset: `${2 * Math.PI * 52 * (1 - timerPct / 100)}`,
-                  transition: "stroke-dashoffset 0.9s linear",
-                }}
-              />
-            </svg>
-            <span className={styles.ringStatus}>
-              {timerActive ? "running" : done ? "time's up" : "paused"}
-            </span>
-          </div>
-
-          <div className={styles.timerBtns}>
-            <button
-              className={styles.timerStartBtn}
-              onClick={timerActive ? stopTimer : startTimer}
-            >
-              {timerActive ? "⏸ Pause" : timeLeft < TIMER_SECONDS && !done ? "▶ Resume" : "▶ Start"}
-            </button>
-            <button
-              className={styles.timerResetBtn}
-              onClick={() => { stopTimer(); setTimeLeft(TIMER_SECONDS); }}
-            >
-              ↺ Reset
-            </button>
-          </div>
-
-          <p className={styles.timerHint}>{TIMER_SECONDS}s per round</p>
-        </aside>
       </div>
     </div>
   );
