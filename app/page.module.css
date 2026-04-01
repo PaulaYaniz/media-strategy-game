@@ -348,49 +348,45 @@
 /* ── Variable meters bar ─────────────────────────────────────────────────── */
 .metersBar {
   display: flex;
-  gap: 20px;
-  padding: 10px 32px;
+  gap: 28px;
+  padding: 18px 32px;
   background: var(--surface);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 2px solid var(--border);
 }
 
 .meter {
   flex: 1;
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
+  gap: 8px;
   min-width: 0;
 }
 
 .meterLabel {
-  font-size: 0.68rem;
-  font-weight: 600;
+  font-size: 0.78rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-  white-space: nowrap;
-  min-width: 100px;
+  letter-spacing: 0.08em;
+  color: var(--text);
 }
 
 .meterTrack {
   flex: 1;
-  height: 8px;
+  height: 20px;
   background: var(--border);
-  border-radius: 4px;
+  border-radius: 6px;
   overflow: hidden;
 }
 
 .meterFill {
   height: 100%;
-  border-radius: 4px;
+  border-radius: 6px;
   transition: width 0.35s ease;
 }
 
 .meterValue {
-  font-size: 0.78rem;
-  font-weight: 700;
-  min-width: 52px;
-  text-align: right;
+  font-size: 1rem;
+  font-weight: 800;
   white-space: nowrap;
 }
 
@@ -429,21 +425,21 @@
 .gameOverMeter {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .gameOverMeterLabel {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--muted);
-  min-width: 110px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text);
+  min-width: 120px;
   text-align: right;
 }
 
 .gameOverMeterValue {
-  font-size: 0.8rem;
-  font-weight: 700;
-  min-width: 32px;
+  font-size: 1rem;
+  font-weight: 800;
+  min-width: 36px;
 }
 
 .twist {
