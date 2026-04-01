@@ -16,6 +16,7 @@ const DEFAULT_SCORES: Record<string, number> = {
   "Team 1": 0,
   "Team 2": 0,
   "Team 3": 0,
+  "Team 4": 0,
 };
 
 const VARIABLES_CONFIG = [
@@ -167,33 +168,6 @@ export default function GamePage() {
         </span>
       </header>
 
-      {/* Variable meters */}
-      <div className={styles.metersBar}>
-        {VARIABLES_CONFIG.map(({ key, label, color }) => {
-          const val = variables[key];
-          const delta = currentEffects ? currentEffects[key] : 0;
-          return (
-            <div key={key} className={styles.meter}>
-              <span className={styles.meterLabel}>{label}</span>
-              <div className={styles.meterTrack}>
-                <div
-                  className={styles.meterFill}
-                  style={{ width: `${val}%`, background: color }}
-                />
-              </div>
-              <span className={styles.meterValue} style={{ color }}>
-                {val}
-                {delta !== 0 && (
-                  <span className={delta > 0 ? styles.deltaPos : styles.deltaNeg}>
-                    {delta > 0 ? ` +${delta}` : ` ${delta}`}
-                  </span>
-                )}
-              </span>
-            </div>
-          );
-        })}
-      </div>
-
       <div className={styles.layout}>
         {/* ── Left: Scoreboard ─────────────────────────────────────────────── */}
         <aside className={styles.sidebar}>
@@ -326,6 +300,36 @@ export default function GamePage() {
             </button>
           </div>
         </main>
+
+        {/* ── Right: Variable Meters ───────────────────────────────────────── */}
+        <aside className={styles.sidebar}>
+          <h2 className={styles.sidebarTitle}>Live Impact</h2>
+          {VARIABLES_CONFIG.map(({ key, label, color }) => {
+            const val = variables[key];
+            const delta = currentEffects ? currentEffects[key] : 0;
+            return (
+              <div key={key} className={styles.meterPanel}>
+                <div className={styles.meterPanelHeader}>
+                  <span className={styles.meterPanelLabel} style={{ color }}>{label}</span>
+                  <span className={styles.meterPanelValue} style={{ color }}>
+                    {val}
+                    {delta !== 0 && (
+                      <span className={delta > 0 ? styles.deltaPos : styles.deltaNeg}>
+                        {delta > 0 ? ` +${delta}` : ` ${delta}`}
+                      </span>
+                    )}
+                  </span>
+                </div>
+                <div className={styles.meterTrack}>
+                  <div
+                    className={styles.meterFill}
+                    style={{ width: `${val}%`, background: color }}
+                  />
+                </div>
+              </div>
+            );
+          })}
+        </aside>
       </div>
     </div>
   );
