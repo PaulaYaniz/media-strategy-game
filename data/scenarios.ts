@@ -19,9 +19,7 @@ export interface Scenario {
   title: string;
   context: string;
   options: Option[];
-  correct: "A" | "B" | "C" | "D";
   outcomes: Record<string, string>;
-  twist: string;
   discussion: string;
 }
 
@@ -53,17 +51,14 @@ const scenarios: Scenario[] = [
         effects: { engagement: 18, reputation: -15, stability: -12 },
       },
     ],
-    correct: "B",
     outcomes: {
       A: "Critics notice. Word of mouth grows. Capacity hits 71% — still below break-even. Show closes with dignity.",
       B: "Tweet goes viral. Show sells out 11 consecutive nights. Audiences later feel manipulated.",
       C: "Discounts fill seats short-term. Full-price sales don't follow. Investors pull out anyway.",
       D: "Broadway Twitter explodes. Capacity jumps to 91%. One lead finds out and refuses to renew.",
     },
-    twist:
-      "Option B saved the show financially — and destroyed the audience's trust in it emotionally.",
     discussion:
-      "Theatre audiences have a personal relationship with live performance. Does emotional manipulation hit differently here than with a brand?",
+      "Which strategy actually builds long-term audience demand — and which one just borrows attention? How do you price the reputational cost of manufactured emotion?",
   },
   {
     id: 2,
@@ -92,17 +87,14 @@ const scenarios: Scenario[] = [
         effects: { engagement: 18, reputation: -14, stability: -10 },
       },
     ],
-    correct: "A",
     outcomes: {
       A: "The booking breaks the internet before it airs. Viewership hits 3.9M — highest in 4 years. The host spends months distancing themselves from the decision.",
       B: "Critics praise it. Viewership stays flat. Network sees it as not enough.",
       C: "Clips rack up 40M views. Ratings climb to 1.8M. Guests start declining long-form bookings.",
       D: "Monologue hits 25M views. Ratings spike to 2.6M for 2 weeks. Two sponsors pull their ads.",
     },
-    twist:
-      "Option A hit the ratings target — but the host is now defined by a single booking they didn't fully believe in.",
     discussion:
-      "Late night used to shape culture. Does chasing outrage make a show more relevant — or just louder?",
+      "How do you weigh a one-night ratings spike against the show's long-term brand identity? What metric should a media strategist actually be optimizing for here?",
   },
   {
     id: 3,
@@ -131,17 +123,14 @@ const scenarios: Scenario[] = [
         effects: { engagement: 12, reputation: -5, stability: 0 },
       },
     ],
-    correct: "C",
     outcomes: {
       A: "Critically loved. Streaming improves modestly. The artist builds a loyal — smaller — fanbase.",
       B: "Post goes viral. Album debut jumps 3x projections. Label–artist relationship is permanently damaged.",
       C: "Streams spike 200% for both artists. Debuts Top 10. Six months later a journalist traces the leak back to the PR team.",
       D: "Collab charts at #18. Opens strong then fades. The artist feels inauthentic. Fans notice.",
     },
-    twist:
-      "Option C worked on every metric — and used the artist as a prop without their full knowledge.",
     discussion:
-      "Who owns the narrative of an artist's career? When the label manufactures the story, who pays when it unravels?",
+      "When controversy is manufactured by the label rather than the artist, who owns the risk? How does that change the media strategy calculus?",
   },
   {
     id: 4,
@@ -170,17 +159,14 @@ const scenarios: Scenario[] = [
         effects: { engagement: 25, reputation: -10, stability: -5 },
       },
     ],
-    correct: "D",
     outcomes: {
       A: "Downloads climb to 3.4M over 8 weeks. Spotify extends renewal at a lower rate.",
       B: "Next episode hits 7.2M downloads. The co-host finds out — and the real conflict is worse than the fake one.",
       C: "Downloads tick to 3.9M. Listener reviews say the show feels rushed. Retention drops.",
       D: "Most-shared episode in the show's history: 9.1M downloads. Spotify renews. A third of the fanbase threatens to leave — then comes back within a month.",
     },
-    twist:
-      "Option D saved the Spotify deal — but the show is now associated with controversy in a genre built on trust.",
     discussion:
-      "Podcasts survive on intimacy. Is rage-baiting more damaging there than in TV or music?",
+      "Podcasts are built on perceived intimacy. How does that change the risk profile of controversy-driven strategy compared to TV or social media?",
   },
   {
     id: 5,
@@ -209,17 +195,14 @@ const scenarios: Scenario[] = [
         effects: { engagement: 10, reputation: 0, stability: 5 },
       },
     ],
-    correct: "B",
     outcomes: {
       A: "User trust improves. Engagement stays flat. Advertiser confidence stabilizes but growth doesn't return.",
       B: "Engagement and ad revenue increase sharply. The platform becomes synonymous with polarizing content. Long-term user trust declines.",
       C: "Time on platform rises sharply. Public criticism grows. Regulators take notice.",
       D: "Activity increases moderately. Platform stays competitive but doesn't reclaim leadership.",
     },
-    twist:
-      "The highest-engagement option became a place people hated — but couldn't leave.",
     discussion:
-      "When a platform optimizes for engagement above everything else, who is actually in control — the platform, the creators, or the algorithm?",
+      "At platform scale, engagement strategy becomes content policy. Who are the real stakeholders a platform must answer to — and in what order?",
   },
 ];
 

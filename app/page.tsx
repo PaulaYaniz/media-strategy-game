@@ -214,16 +214,12 @@ export default function GamePage() {
 
             <div className={styles.options}>
               {scenario.options.map((opt) => {
-                const isCorrect = revealed && opt.id === scenario.correct;
-                const isWrong = revealed && opt.id !== scenario.correct;
                 const isSelected = selectedOption === opt.id;
                 return (
                   <div
                     key={opt.id}
                     className={[
                       styles.option,
-                      isCorrect && styles.optCorrect,
-                      isWrong && styles.optWrong,
                       isSelected && styles.optSelected,
                     ].filter(Boolean).join(" ")}
                     onClick={() => selectOption(opt.id)}
@@ -251,8 +247,7 @@ export default function GamePage() {
                         </div>
                       )}
                     </div>
-                    {isCorrect && <span className={styles.badge}>✓ Best answer</span>}
-                    {isSelected && !isCorrect && <span className={styles.selectedBadge}>Selected</span>}
+                    {isSelected && <span className={styles.selectedBadge}>Selected</span>}
                   </div>
                 );
               })}
@@ -262,20 +257,11 @@ export default function GamePage() {
               <div className={styles.outcomes}>
                 <h3 className={styles.outcomesHeading}>What happens?</h3>
                 {scenario.options.map((opt) => (
-                  <div
-                    key={opt.id}
-                    className={`${styles.outcomeRow} ${
-                      opt.id === scenario.correct ? styles.outcomeCorrect : ""
-                    }`}
-                  >
+                  <div key={opt.id} className={styles.outcomeRow}>
                     <span className={styles.outcomeId}>{opt.id}</span>
                     <span className={styles.outcomeText}>{scenario.outcomes[opt.id]}</span>
                   </div>
                 ))}
-                <div className={styles.twist}>
-                  <span className={styles.twistLabel}>Twist</span>
-                  <p className={styles.twistText}>{scenario.twist}</p>
-                </div>
                 <div className={styles.discussion}>
                   <span className={styles.discussionLabel}>Discussion</span>
                   <p className={styles.discussionText}>{scenario.discussion}</p>
@@ -289,10 +275,10 @@ export default function GamePage() {
               ← Prev
             </button>
             {revealed ? (
-              <span className={styles.revealedTag}>Answer Revealed</span>
+              <span className={styles.revealedTag}>Outcomes Revealed</span>
             ) : (
               <button className={styles.revealBtn} onClick={() => setRevealed(true)}>
-                Reveal Answer
+                Reveal Outcomes
               </button>
             )}
             <button className={styles.navBtn} onClick={advance}>
