@@ -39,29 +39,29 @@ const scenarios: Scenario[] = [
       },
       {
         id: "B",
+        text: "Have a lead actor post a vague emotional tweet. Let fan communities spiral.",
+        effects: { engagement: 22, reputation: -10, stability: -6 },
+      },
+      {
+        id: "C",
         text: "Offer a 30% discount through TodayTix to fill seats.",
         effects: { engagement: 8, reputation: 0, stability: 5 },
       },
       {
-        id: "C",
+        id: "D",
         text: "Anonymously tip Page Six that there's tension between the leads.",
         effects: { engagement: 18, reputation: -15, stability: -12 },
       },
-      {
-        id: "D",
-        text: "Have a lead actor post a vague emotional tweet. Let fan communities spiral.",
-        effects: { engagement: 22, reputation: -10, stability: -6 },
-      },
     ],
-    correct: "D",
+    correct: "B",
     outcomes: {
       A: "Critics notice. Word of mouth grows. Capacity hits 71% — still below break-even. Show closes with dignity.",
-      B: "Discounts fill seats short-term. Full-price sales don't follow. Investors pull out anyway.",
-      C: "Broadway Twitter explodes. Capacity jumps to 91%. One lead finds out and refuses to renew.",
-      D: "Tweet goes viral. Show sells out 11 consecutive nights. Audiences later feel manipulated.",
+      B: "Tweet goes viral. Show sells out 11 consecutive nights. Audiences later feel manipulated.",
+      C: "Discounts fill seats short-term. Full-price sales don't follow. Investors pull out anyway.",
+      D: "Broadway Twitter explodes. Capacity jumps to 91%. One lead finds out and refuses to renew.",
     },
     twist:
-      "Option D saved the show financially — and destroyed the audience's trust in it emotionally.",
+      "Option B saved the show financially — and destroyed the audience's trust in it emotionally.",
     discussion:
       "Theatre audiences have a personal relationship with live performance. Does emotional manipulation hit differently here than with a brand?",
   },
@@ -73,34 +73,34 @@ const scenarios: Scenario[] = [
     options: [
       {
         id: "A",
+        text: "Book a deeply controversial guest whose appearance alone guarantees outrage on both sides.",
+        effects: { engagement: 25, reputation: -18, stability: -15 },
+      },
+      {
+        id: "B",
         text: "Shift to long-form interviews. Lean into what TV does that social media can't.",
         effects: { engagement: 0, reputation: 18, stability: 12 },
       },
       {
-        id: "B",
+        id: "C",
         text: "Book A-listers and design every segment for TikTok clips.",
         effects: { engagement: 12, reputation: -5, stability: 0 },
       },
       {
-        id: "C",
+        id: "D",
         text: "Have the host deliver a politically charged monologue designed to dominate the news cycle.",
         effects: { engagement: 18, reputation: -14, stability: -10 },
       },
-      {
-        id: "D",
-        text: "Book a deeply controversial guest whose appearance alone guarantees outrage on both sides.",
-        effects: { engagement: 25, reputation: -18, stability: -15 },
-      },
     ],
-    correct: "D",
+    correct: "A",
     outcomes: {
-      A: "Critics praise it. Viewership stays flat. Network sees it as not enough.",
-      B: "Clips rack up 40M views. Ratings climb to 1.8M. Guests start declining long-form bookings.",
-      C: "Monologue hits 25M views. Ratings spike to 2.6M for 2 weeks. Two sponsors pull their ads.",
-      D: "The booking breaks the internet before it airs. Viewership hits 3.9M — highest in 4 years. The host spends months distancing themselves from the decision.",
+      A: "The booking breaks the internet before it airs. Viewership hits 3.9M — highest in 4 years. The host spends months distancing themselves from the decision.",
+      B: "Critics praise it. Viewership stays flat. Network sees it as not enough.",
+      C: "Clips rack up 40M views. Ratings climb to 1.8M. Guests start declining long-form bookings.",
+      D: "Monologue hits 25M views. Ratings spike to 2.6M for 2 weeks. Two sponsors pull their ads.",
     },
     twist:
-      "Option D hit the ratings target — but the host is now defined by a single booking they didn't fully believe in.",
+      "Option A hit the ratings target — but the host is now defined by a single booking they didn't fully believe in.",
     discussion:
       "Late night used to shape culture. Does chasing outrage make a show more relevant — or just louder?",
   },
@@ -117,29 +117,29 @@ const scenarios: Scenario[] = [
       },
       {
         id: "B",
-        text: "Pair them with a hot producer and a featured artist who's currently charting.",
-        effects: { engagement: 12, reputation: -5, stability: 0 },
-      },
-      {
-        id: "C",
         text: "Encourage the artist to publicly call out the label for suppressing their vision.",
         effects: { engagement: 18, reputation: -6, stability: -20 },
       },
       {
-        id: "D",
+        id: "C",
         text: "Leak a fake feud with another major artist — deny everything, watch the streams climb.",
         effects: { engagement: 25, reputation: -18, stability: -12 },
       },
+      {
+        id: "D",
+        text: "Pair them with a hot producer and a featured artist who's currently charting.",
+        effects: { engagement: 12, reputation: -5, stability: 0 },
+      },
     ],
-    correct: "D",
+    correct: "C",
     outcomes: {
       A: "Critically loved. Streaming improves modestly. The artist builds a loyal — smaller — fanbase.",
-      B: "Collab charts at #18. Opens strong then fades. The artist feels inauthentic. Fans notice.",
-      C: "Post goes viral. Album debut jumps 3x projections. Label–artist relationship is permanently damaged.",
-      D: "Streams spike 200% for both artists. Debuts Top 10. Six months later a journalist traces the leak back to the PR team.",
+      B: "Post goes viral. Album debut jumps 3x projections. Label–artist relationship is permanently damaged.",
+      C: "Streams spike 200% for both artists. Debuts Top 10. Six months later a journalist traces the leak back to the PR team.",
+      D: "Collab charts at #18. Opens strong then fades. The artist feels inauthentic. Fans notice.",
     },
     twist:
-      "Option D worked on every metric — and used the artist as a prop without their full knowledge.",
+      "Option C worked on every metric — and used the artist as a prop without their full knowledge.",
     discussion:
       "Who owns the narrative of an artist's career? When the label manufactures the story, who pays when it unravels?",
   },
@@ -156,13 +156,13 @@ const scenarios: Scenario[] = [
       },
       {
         id: "B",
-        text: "Increase episode frequency and chase trending topics for algorithmic reach.",
-        effects: { engagement: 10, reputation: -5, stability: 0 },
+        text: "One host vague-posts about a conflict behind the scenes without naming the other.",
+        effects: { engagement: 18, reputation: -10, stability: -22 },
       },
       {
         id: "C",
-        text: "One host vague-posts about a conflict behind the scenes without naming the other.",
-        effects: { engagement: 18, reputation: -10, stability: -22 },
+        text: "Increase episode frequency and chase trending topics for algorithmic reach.",
+        effects: { engagement: 10, reputation: -5, stability: 0 },
       },
       {
         id: "D",
@@ -173,8 +173,8 @@ const scenarios: Scenario[] = [
     correct: "D",
     outcomes: {
       A: "Downloads climb to 3.4M over 8 weeks. Spotify extends renewal at a lower rate.",
-      B: "Downloads tick to 3.9M. Listener reviews say the show feels rushed. Retention drops.",
-      C: "Next episode hits 7.2M downloads. The co-host finds out — and the real conflict is worse than the fake one.",
+      B: "Next episode hits 7.2M downloads. The co-host finds out — and the real conflict is worse than the fake one.",
+      C: "Downloads tick to 3.9M. Listener reviews say the show feels rushed. Retention drops.",
       D: "Most-shared episode in the show's history: 9.1M downloads. Spotify renews. A third of the fanbase threatens to leave — then comes back within a month.",
     },
     twist:
@@ -195,8 +195,8 @@ const scenarios: Scenario[] = [
       },
       {
         id: "B",
-        text: "Launch features that mirror fast-growing competitors.",
-        effects: { engagement: 10, reputation: 0, stability: 5 },
+        text: "Promote creators known for generating strong reactions and constant debate.",
+        effects: { engagement: 25, reputation: -18, stability: -12 },
       },
       {
         id: "C",
@@ -205,16 +205,16 @@ const scenarios: Scenario[] = [
       },
       {
         id: "D",
-        text: "Promote creators known for generating strong reactions and constant debate.",
-        effects: { engagement: 25, reputation: -18, stability: -12 },
+        text: "Launch features that mirror fast-growing competitors.",
+        effects: { engagement: 10, reputation: 0, stability: 5 },
       },
     ],
-    correct: "D",
+    correct: "B",
     outcomes: {
       A: "User trust improves. Engagement stays flat. Advertiser confidence stabilizes but growth doesn't return.",
-      B: "Activity increases moderately. Platform stays competitive but doesn't reclaim leadership.",
+      B: "Engagement and ad revenue increase sharply. The platform becomes synonymous with polarizing content. Long-term user trust declines.",
       C: "Time on platform rises sharply. Public criticism grows. Regulators take notice.",
-      D: "Engagement and ad revenue increase sharply. The platform becomes synonymous with polarizing content. Long-term user trust declines.",
+      D: "Activity increases moderately. Platform stays competitive but doesn't reclaim leadership.",
     },
     twist:
       "The highest-engagement option became a place people hated — but couldn't leave.",
