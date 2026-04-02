@@ -33,7 +33,7 @@ const scenarios: Scenario[] = [
       {
         id: "A",
         text: "Bring in a new choreographer and tighten the second act.",
-        effects: { engagement: 5, reputation: 15, stability: 10 },
+        effects: { engagement: -8, reputation: 15, stability: 10 },
       },
       {
         id: "B",
@@ -74,7 +74,7 @@ const scenarios: Scenario[] = [
       {
         id: "B",
         text: "Shift to long-form interviews. Lean into what TV does that social media can't.",
-        effects: { engagement: 0, reputation: 18, stability: 12 },
+        effects: { engagement: -10, reputation: 18, stability: 12 },
       },
       {
         id: "C",
@@ -105,7 +105,7 @@ const scenarios: Scenario[] = [
       {
         id: "A",
         text: "Give the artist full creative control — let them make the album they actually want.",
-        effects: { engagement: 5, reputation: 20, stability: 18 },
+        effects: { engagement: -5, reputation: 20, stability: 18 },
       },
       {
         id: "B",
@@ -177,7 +177,7 @@ const scenarios: Scenario[] = [
       {
         id: "A",
         text: "Introduce transparency tools, healthier usage features, and better content moderation.",
-        effects: { engagement: 0, reputation: 20, stability: 12 },
+        effects: { engagement: -12, reputation: 20, stability: 12 },
       },
       {
         id: "B",
